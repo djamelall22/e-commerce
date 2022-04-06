@@ -1,21 +1,9 @@
-import Home from "./HomePage";
-import About from "./AboutPage";
-import AuthWrapper from "./AuthWrapper";
-import Cart from "./CartPage";
-import Checkout from "./CheckoutPage";
-import Error from "./ErrorPage";
-import PrivateRoute from "./PrivateRoute";
-import Products from "./ProductsPage";
-import SingleProduct from "./SingleProductPage";
-
-export {
-  Home,
-  About,
-  AuthWrapper,
-  Cart,
-  Checkout,
-  Error,
-  PrivateRoute,
-  Products,
-  SingleProduct,
-};
+export { default as Home } from "./HomePage";
+export { default as About } from "./AboutPage";
+export { default as AuthWrapper } from "./AuthWrapper";
+export { default as Cart } from "./CartPage";
+export { default as Checkout } from "./CheckoutPage";
+export { default as Error } from "./ErrorPage";
+export { default as PrivateRoute } from "./PrivateRoute";
+export { default as Products } from "./ProductsPage";
+export { default as SingleProduct } from "./SingleProductPage";

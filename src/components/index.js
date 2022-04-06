@@ -1,40 +1,19 @@
-import FeaturedProducts from './FeaturedProducts'
-import Navbar from './Navbar'
-import CartButtons from './CartButtons'
-import Footer from './Footer'
-import Sidebar from './Sidebar'
-import Hero from './Hero'
-import Services from './Services'
-import Contact from './Contact'
-import Loading from './Loading'
-import Error from './Error'
-import ProductImages from './ProductImages'
-import AddToCart from './AddToCart'
-import Filters from './Filters'
-import ProductList from './ProductList'
-import Sort from './Sort'
-import Stars from './Stars'
-import CartContent from './CarContent'
-import PageHero from './PageHero'
-import StripeCheckout from './StripeCheckout'
-export {
-  FeaturedProducts,
-  Navbar,
-  CartButtons,
-  Footer,
-  Sidebar,
-  Hero,
-  Services,
-  Contact,
-  Loading,
-  Error,
-  ProductImages,
-  AddToCart,
-  Filters,
-  ProductList,
-  Sort,
-  Stars,
-  CartContent,
-  PageHero,
-  StripeCheckout,
-}
+export { default as FeaturedProducts } from "./FeaturedProducts";
+export { default as Navbar } from "./Navbar";
+export { default as CartButtons } from "./CartButtons";
+export { default as Footer } from "./Footer";
+export { default as Sidebar } from "./Sidebar";
+export { default as Hero } from "./Hero";
+export { default as Services } from "./Services";
+export { default as Contact } from "./Contact";
+export { default as Loading } from "./Loading";
+export { default as Error } from "./Error";
+export { default as ProductImages } from "./ProductImages";
+export { default as AddToCart } from "./AddToCart";
+export { default as Filters } from "./Filters";
+export { default as ProductList } from "./ProductList";
+export { default as Sort } from "./Sort";
+export { default as Stars } from "./Stars";
+export { default as CartContent } from "./CarContent";
+export { default as PageHero } from "./PageHero";
+export { default as StripeCheckout } from "./StripeCheckout";
