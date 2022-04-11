@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Error from "./Error";
 import Loading from "./Loading";
-import Product from "./Product";
+import ProductCard from "./ProductCard";
 
 const FeaturedProducts = () => {
   const {
@@ -27,7 +27,7 @@ const FeaturedProducts = () => {
       </div>
       <div className="section-center featured">
         {featured.slice(0, 3).map((product) => (
-          <Product key={product.id} {...product} />
+          <ProductCard key={product.id} {...product} />
         ))}
       </div>
     </Wrapper>
