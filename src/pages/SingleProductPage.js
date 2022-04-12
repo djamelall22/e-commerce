@@ -22,7 +22,7 @@ const SingleProductPage = () => {
     fetchSingleProduct,
     single_product_loading: loading,
     single_product_error: error,
-    single_product: product,
+    single_product,
   } = useProductsContext();
 
   // fetch a product
@@ -56,7 +56,7 @@ const SingleProductPage = () => {
     stars,
     company,
     images,
-  } = product;
+  } = single_product;
 
   return (
     <Wrapper>
@@ -69,7 +69,7 @@ const SingleProductPage = () => {
 
         <div className="product-center">
           {/* left side */}
-          <ProductImages />
+          <ProductImages images={images} />
 
           {/* right side */}
           <section>
