@@ -1,13 +1,58 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { FaCheck } from 'react-icons/fa'
-import { useCartContext } from '../context/cart_context'
-import AmountButtons from './AmountButtons'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { FaCheck } from "react-icons/fa";
+import { useCartContext } from "../context/cart_context";
+import AmountButtons from "./AmountButtons";
 
-const AddToCart = () => {
-  return <h4>addToCart </h4>
-}
+const AddToCart = ({ product }) => {
+  const { id, stock, colors } = product;
+  const [mainColor, setMainColor] = useState(colors[0]);
+
+  const [amount, setAmount] = useState(1);
+
+  const increment = () => {
+    if (stock > amount) setAmount((currAmount) => currAmount + 1);
+  };
+
+  const decrement = () => {
+    if (amount > 1) setAmount((currAmount) => currAmount - 1);
+  };
+
+  return (
+    <Wrapper>
+      <div className="colors">
+        <span>Colors:</span>
+        <div>
+          {colors.map((color, index) => (
+            <button
+              key={index}
+              className={color === mainColor ? "active color-btn" : "color-btn"}
+              style={{ background: color }}
+              onClick={() => {
+                setMainColor(color);
+              }}
+            >
+              {color === mainColor && <FaCheck />}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="btn-container">
+        <AmountButtons
+          amount={amount}
+          increment={increment}
+          decrement={decrement}
+        />
+
+        <Link to="/cart" className="btn">
+          add to cart
+        </Link>
+      </div>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   margin-top: 2rem;
@@ -53,5 +98,5 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     width: 140px;
   }
-`
-export default AddToCart
+`;
+export default AddToCart;

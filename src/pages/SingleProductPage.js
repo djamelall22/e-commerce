@@ -68,13 +68,15 @@ const SingleProductPage = () => {
         </Link>
 
         <div className="product-center">
-          {/* left side */}
+          {/* left side IMAGES*/}
           <ProductImages images={images} />
 
           {/* right side */}
           <section>
             <h2>{name}</h2>
+            {/* Stars component */}
             <Stars stars={stars} reviews={reviews} />
+
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>
             <p className="info">
@@ -90,7 +92,9 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr />
-            {stock > 0 && <AddToCart />}
+
+            {/* add to cart component */}
+            {stock > 0 && <AddToCart product={single_product} />}
           </section>
         </div>
       </div>
