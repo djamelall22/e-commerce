@@ -7,14 +7,16 @@ import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ product }) => {
   const { id, stock, colors } = product;
-  const [mainColor, setMainColor] = useState(colors[0]);
 
+  const [mainColor, setMainColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
 
+  // increment amount
   const increment = () => {
     if (stock > amount) setAmount((currAmount) => currAmount + 1);
   };
 
+  // decrement amount
   const decrement = () => {
     if (amount > 1) setAmount((currAmount) => currAmount - 1);
   };
