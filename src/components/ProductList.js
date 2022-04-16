@@ -16,9 +16,7 @@ const ProductList = () => {
   }
 
   // List View
-  if (gridView === false) {
-    return <ListView filtredProducts={filtredProducts} />;
-  }
+  if (!gridView) return <ListView filtredProducts={filtredProducts} />;
 
   // Grid View
   return <GridView filtredProducts={filtredProducts} />;

@@ -7,7 +7,10 @@ const ListView = ({ filtredProducts }) => {
     <Wrapper>
       {filtredProducts.map(({ id, price, description, image, name }) => (
         <article key={id}>
-          <img src={image} alt={name} />
+          <Link to={`/products/${id}`}>
+            <img src={image} alt={name} />
+          </Link>
+
           <div>
             <h4>{name}</h4>
             <h5 className="price">{formatPrice(price)}</h5>
@@ -47,7 +50,7 @@ const Wrapper = styled.section`
     margin-bottom: 1rem;
   }
   .btn {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
     padding: 0.25rem 0.5rem;
   }
   @media (min-width: 992px) {

@@ -16,6 +16,7 @@ const initialState = {
   filtred_products: [],
   all_products: [],
   grid_view: false,
+  sort: "price-lowest",
 };
 
 const FilterContext = createContext();
@@ -27,10 +28,27 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]); //at the first load the products array is empty;
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // set grid view
+  const setGridView = () => {
+    dispatch({ type: SET_GRIDVIEW });
+  };
 
+  // set list view
+  const setListView = () => {
+    dispatch({ type: SET_LISTVIEW });
+  };
+
+  // Update sort value (option)
+  const updateSortValue = (e) => {
+    const value = e.target.value;
+    dispatch({ type: UPDATE_SORT, payload: value });
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <FilterContext.Provider value={{ ...state }}>
+    <FilterContext.Provider
+      value={{ ...state, setListView, setGridView, updateSortValue }}
+    >
       {children}
     </FilterContext.Provider>
   );
