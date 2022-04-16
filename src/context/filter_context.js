@@ -15,6 +15,7 @@ import { useProductsContext } from "./products_context";
 const initialState = {
   filtred_products: [],
   all_products: [],
+  grid_view: false,
 };
 
 const FilterContext = createContext();

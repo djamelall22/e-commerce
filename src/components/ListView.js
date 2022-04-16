@@ -1,10 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
-import { formatPrice } from '../utils/helpers'
-import { Link } from 'react-router-dom'
-const ListView = () => {
-  return <h4>list view</h4>
-}
+import React from "react";
+import styled from "styled-components";
+import { formatPrice } from "../utils/helpers";
+import { Link } from "react-router-dom";
+const ListView = ({ filtredProducts }) => {
+  return (
+    <Wrapper>
+      {filtredProducts.map(({ id, price, description, image, name }) => (
+        <article key={id}>
+          <img src={image} alt={name} />
+          <div>
+            <h4>{name}</h4>
+            <h5 className="price">{formatPrice(price)}</h5>
+            <p>{description.substring(0, 150)}...</p>
+            <Link to={`/products/${id}`} className="btn">
+              Details
+            </Link>
+          </div>
+        </article>
+      ))}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   display: grid;
@@ -13,7 +29,7 @@ const Wrapper = styled.section`
   img {
     width: 100%;
     display: block;
-    width: 300px;
+    width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: var(--radius);
@@ -41,7 +57,11 @@ const Wrapper = styled.section`
       column-gap: 2rem;
       align-items: center;
     }
-  }
-`
 
-export default ListView
+    img {
+      width: 300px;
+    }
+  }
+`;
+
+export default ListView;
