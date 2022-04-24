@@ -3,4 +3,11 @@ export const formatPrice = (number) =>
     number / 100
   );
 
-export const getUniqueValues = () => {};
+// data = all_products / type = category, colors or company (elements inside all_products)
+export const getUniqueValues = (data, type) => {
+  let unique = data.map((item) => item[type]);
+  if (type === "colors") {
+    unique = unique.flat();
+  }
+  return ["all", ...new Set(unique)];
+};

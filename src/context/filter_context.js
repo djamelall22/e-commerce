@@ -17,6 +17,17 @@ const initialState = {
   all_products: [],
   grid_view: false,
   sort: "price-lowest",
+
+  filters: {
+    searchText: "",
+    company: "all",
+    category: "all",
+    color: "all",
+    min_price: 0,
+    max_price: 0,
+    price: 0, //default value
+    shipping: false,
+  },
 };
 
 const FilterContext = createContext();
@@ -30,10 +41,14 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]); //at the first load the products array is empty;
 
-  // sort products
+  // sort and filter products
   useEffect(() => {
+    // filter product by categorie, price, color ...
+    dispatch({ type: FILTER_PRODUCTS });
+
+    // sort production by option (a to z) ...
     dispatch({ type: SORT_PRODUCTS });
-  }, [products, state.sort]);
+  }, [products, state.sort, state.filters]);
 
   // set grid view
   const setGridView = () => {
@@ -45,15 +60,41 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_LISTVIEW });
   };
 
-  // Update sort value (option)
+  // Update sort by option value
   const updateSortValue = (e) => {
     const value = e.target.value;
     dispatch({ type: UPDATE_SORT, payload: value });
   };
 
+  //update filters
+  const updateFilters = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    // cause button don't have a value property
+    if (name === "category") {
+      value = e.target.textContent;
+    }
+    if (name === "color") {
+      value = e.target.dataset.color;
+    }
+    console.log("name " + name, "value " + value);
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+  };
+
+  //clear filters
+  const clearFilters = () => {};
+
   return (
     <FilterContext.Provider
-      value={{ ...state, setListView, setGridView, updateSortValue }}
+      value={{
+        ...state,
+        setListView,
+        setGridView,
+        updateSortValue,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FilterContext.Provider>

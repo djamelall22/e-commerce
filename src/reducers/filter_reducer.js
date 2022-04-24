@@ -12,11 +12,20 @@ import {
 const filter_reducer = (state, action) => {
   // load products
   if (action.type === LOAD_PRODUCTS) {
+    // get max price and price
+    let maxPrice = action.payload.map((p) => p.price);
+    maxPrice = Math.max(...maxPrice);
+
     // i used [...spread values ] to copy the values and not pointing to the same place in memory
     return {
       ...state,
       all_products: [...action.payload],
       filtred_products: [...action.payload],
+      filters: {
+        ...state.filters,
+        max_price: maxPrice,
+        price: maxPrice,
+      },
     };
   }
 
@@ -28,6 +37,12 @@ const filter_reducer = (state, action) => {
 
   // Update sort value (option)
   if (action.type === UPDATE_SORT) return { ...state, sort: action.payload };
+
+  // filter products
+  if (action.type === FILTER_PRODUCTS) {
+    console.log("filtering products");
+    return { ...state };
+  }
 
   //  sort product by option
   if (action.type === SORT_PRODUCTS) {
@@ -47,6 +62,12 @@ const filter_reducer = (state, action) => {
       tempProducts = tempProducts.sort((a, b) => b.name.localeCompare(a.name));
     }
     return { ...state, filtred_products: tempProducts };
+  }
+
+  // update filters
+  if (action.type === UPDATE_FILTERS) {
+    const { name, value } = action.payload;
+    return { ...state, filters: { ...state, [name]: value } };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);

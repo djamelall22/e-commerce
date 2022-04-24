@@ -10,6 +10,7 @@ import {
 } from "../actions";
 
 const products_reducer = (state, action) => {
+  // sidebar
   if (action.type === SIDEBAR_OPEN) {
     return { ...state, isSidebarOpen: true };
   }
@@ -18,6 +19,7 @@ const products_reducer = (state, action) => {
     return { ...state, isSidebarOpen: false };
   }
 
+  // fetching all products
   if (action.type === GET_PRODUCTS_BEGIN) {
     return { ...state, products_loading: true };
   }
@@ -38,6 +40,7 @@ const products_reducer = (state, action) => {
     return { ...state, products_loading: false, products_error: true };
   }
 
+  // fetching single product
   if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
     return {
       ...state,
