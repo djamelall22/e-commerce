@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
 
-const GridView = ({ filtredProducts }) => {
+const GridView = ({ filteredProducts }) => {
   return (
     <Wrapper>
       <div className="products-container">
-        {filtredProducts.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard {...product} key={product.id} />
         ))}
       </div>

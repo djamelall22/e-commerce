@@ -4,10 +4,10 @@ import GridView from "./GridView";
 import ListView from "./ListView";
 
 const ProductList = () => {
-  const { filtred_products: filtredProducts, grid_view: gridView } =
+  const { filtered_products: filteredProducts, grid_view: gridView } =
     useFilterContext();
 
-  if (filtredProducts.length < 1) {
+  if (filteredProducts.length < 1) {
     return (
       <h5 style={{ textTransform: "none" }}>
         Sorry, no products matched your search...
@@ -16,10 +16,10 @@ const ProductList = () => {
   }
 
   // List View
-  if (!gridView) return <ListView filtredProducts={filtredProducts} />;
+  if (!gridView) return <ListView filteredProducts={filteredProducts} />;
 
   // Grid View
-  return <GridView filtredProducts={filtredProducts} />;
+  return <GridView filteredProducts={filteredProducts} />;
 };
 
 export default ProductList;

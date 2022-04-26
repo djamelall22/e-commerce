@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Sort = () => {
   const {
-    filtred_products: filtredProducts,
+    filtered_products: filteredProducts,
     grid_view: gridView,
     setGridView,
     setListView,
@@ -33,7 +33,7 @@ const Sort = () => {
           <BsList />
         </button>
       </div>
-      <p>{filtredProducts.length} products found</p>
+      <p>{filteredProducts.length} products found</p>
       <hr />
       <form>
         <label htmlFor="sort">sort by</label>
