@@ -7,6 +7,7 @@ import {
 } from "../actions";
 
 const cart_reducer = (state, action) => {
+  // add to cart
   if (action.type === ADD_TO_CART) {
     const { id, color, amount, product } = action.payload;
     // check if item is in the cart
