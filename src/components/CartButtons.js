@@ -8,6 +8,7 @@ import { useUserContext } from "../context/user_context";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
+  const { total_items } = useCartContext();
   return (
     // the class: cart-btn-wrapper is in navbar.js
     <Wrapper className="cart-btn-wrapper">
@@ -15,7 +16,7 @@ const CartButtons = () => {
         Cart
         <span className="cart-container">
           <FaShoppingCart />
-          <span className="cart-value">5</span>
+          <span className="cart-value">{total_items}</span>
         </span>
       </Link>
 

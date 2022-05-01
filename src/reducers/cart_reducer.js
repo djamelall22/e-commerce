@@ -7,7 +7,7 @@ import {
 } from "../actions";
 
 const cart_reducer = (state, action) => {
-  // add to cart
+  ////// add to cart //////
   if (action.type === ADD_TO_CART) {
     const { id, color, amount, product } = action.payload;
     // check if item is in the cart
@@ -42,6 +42,47 @@ const cart_reducer = (state, action) => {
 
       return { ...state, cart: [...state.cart, newItem] };
     }
+  }
+
+  ////// remove item from the cart //////
+  if (action.type === REMOVE_CART_ITEM) {
+    const tempCart = state.cart.filter((item) => item.id !== action.payload);
+    return { ...state, cart: tempCart };
+  }
+
+  ////// clear cart //////
+  if (action.type === CLEAR_CART) {
+    return { ...state, cart: [] };
+  }
+
+  ////// toggle amount //////
+  if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
+    const { id, value } = action.payload;
+    const tempCart = state.cart.map((item) => {
+      if (item.id === id) {
+        if (value === "increment") {
+          let newAmount = item.amount + 1;
+          if (newAmount > item.max) newAmount = item.max;
+          return { ...item, amount: newAmount };
+        }
+        if (value === "decrement") {
+          if (value === "decrement") {
+            let newAmount = item.amount - 1;
+            if (newAmount < 1) newAmount = 1;
+            return { ...item, amount: newAmount };
+          }
+        }
+      } else {
+        return item;
+      }
+    });
+    return { ...state, cart: tempCart };
+  }
+
+  // COUNT_CART_TOTALS
+  if (action.type === COUNT_CART_TOTALS) {
+    let newTotalAmount;
+    return { ...state, total_amount: newTotalAmount };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);

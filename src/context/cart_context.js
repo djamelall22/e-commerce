@@ -8,7 +8,7 @@ import {
   COUNT_CART_TOTALS,
 } from "../actions";
 
-// store local storage value in state.cart
+// store local storage values in state.cart
 const getLocalStorage = () => {
   let cart = localStorage.getItem("cart");
   if (cart) {
@@ -38,17 +38,26 @@ export const CartProvider = ({ children }) => {
   };
 
   // remove Item
-  const removeItem = (item) => {};
-
-  // toggle amount
-  const toggleAmount = (id, value) => {};
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id });
+  };
 
   // clear cart
-  const clearCart = () => {};
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
+
+  // toggle amount
+  // value: if we are increasing or decrasing the amout
+  const toggleAmount = (id, value) => {
+    console.log("value: ", value, "id: ", id);
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
+  };
 
   //  local storage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
+    dispatch({ type: COUNT_CART_TOTALS });
   }, [state.cart]);
 
   return (
