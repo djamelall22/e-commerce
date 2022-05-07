@@ -57,6 +57,7 @@ const filter_reducer = (state, action) => {
     if (sort === "name-z") {
       tempProducts = tempProducts.sort((a, b) => b.name.localeCompare(a.name));
     }
+
     return { ...state, filtered_products: tempProducts };
   }
 

@@ -28,6 +28,7 @@ const SingleProductPage = () => {
   // fetch a product
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
+    //eslint-disable-next-line
   }, [id]);
 
   // redirect in case of error
@@ -37,6 +38,7 @@ const SingleProductPage = () => {
         navigate("/");
       }, 3000);
     }
+    //eslint-disable-next-line
   }, [error]);
 
   // display loading spinner
