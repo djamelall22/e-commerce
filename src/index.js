@@ -13,6 +13,7 @@ const root = createRoot(rootElement);
 
 // domain: djamel-eddine.eu.auth0.com
 // client id; ZbT5i8MiUiUzI114xCgd5jMutkRCeXyk
+// personal project don't care about security
 
 root.render(
   <Auth0Provider
